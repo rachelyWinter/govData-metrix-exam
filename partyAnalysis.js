@@ -24,9 +24,7 @@ function fetchListOfCity() {
     })
     .then((data) => {
       const cities = data.result.records;
-
       const cityNames = cities.map((city) => city["שם_ישוב"]); // מחלצים את השם של העיר
-
       const cityListElement = document.getElementById("city_list");
       cityNames.forEach((cityName) => {
         const option = document.createElement("option");
@@ -39,7 +37,6 @@ function fetchListOfCity() {
     });
 }
 
-fetchListOfCity();
 
 function fetch7TopPartiesByCity(cityName) {
   document.createElement("h1").innerHTML = "תוצאות הבחירות";
