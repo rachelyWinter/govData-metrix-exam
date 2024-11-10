@@ -71,10 +71,22 @@ function fetch7TopPartiesByCity(cityName) {
           .filter(([key, value]) => value > 10)
           .slice(0, 7);
         console.log(topParties);
-        resetCanvas();
-        const ctx = document.getElementById("myChart");
         const labels = topParties.map((item) => item[0]);
         const data = topParties.map((item) => item[1]);
+        drawChart(labels,data)
+        
+      }
+    });
+}
+
+function resetCanvas() {
+  const canvasContainer = document.getElementById("canvasContainer");
+  canvasContainer.innerHTML = '<canvas id="myChart"></canvas>';
+}
+function drawChart(labels,data)
+{
+    resetCanvas();
+        const ctx = document.getElementById("myChart");
 
         new Chart(ctx, {
           type: "bar",
@@ -95,13 +107,5 @@ function fetch7TopPartiesByCity(cityName) {
               },
             },
           },
-        });
-      }
-    });
+        }); 
 }
-
-function resetCanvas() {
-  const canvasContainer = document.getElementById("canvasContainer");
-  canvasContainer.innerHTML = '<canvas id="myChart"></canvas>';
-}
-// fetch7TopPartiesByCity("מודיעין עילית");
